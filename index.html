@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coffee with ADHD — Beginner to Home Barista</title>
+  <meta name="description" content="Coffee with ADHD: mi camino de principiante a home barista en UAE. Espresso, latte art y aprendizaje real." />
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#101826;
+      --muted:#93a4b7;
+      --text:#eaf2ff;
+      --line:rgba(255,255,255,.10);
+      --accent:#caa46a;
+      --accent2:#7bd3ff;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1000px 600px at 20% 0%, rgba(202,164,106,.25), transparent 60%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(123,211,255,.20), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(14px);
+      background: rgba(11,15,20,.55);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(202,164,106,.95), rgba(123,211,255,.65));
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      position:relative;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:10px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,.25);
+      background: rgba(11,15,20,.35);
+    }
+    .navlinks{display:flex; gap:16px; flex-wrap:wrap}
+    .navlinks a{
+      color:var(--muted);
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:12px;
+    }
+    .navlinks a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .cta{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn.primary{
+      border-color: rgba(202,164,106,.45);
+      background: linear-gradient(135deg, rgba(202,164,106,.30), rgba(123,211,255,.15));
+    }
+    .hero{
+      padding:48px 0 22px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; padding-top:26px}
+      .navlinks{display:none}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-left{padding:26px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      color: var(--muted);
+      font-weight:600;
+      letter-spacing:.25px;
+      font-size:13px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(202,164,106,.18);
+    }
+    h1{
+      margin:12px 0 10px;
+      font-size:44px;
+      line-height:1.06;
+      letter-spacing:-.6px;
+    }
+    @media (max-width: 520px){
+      h1{font-size:36px}
+    }
+    .sub{
+      color: var(--muted);
+      font-size:16px;
+      margin:0 0 18px;
+      max-width: 60ch;
+    }
+    .pillrow{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 6px}
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(11,15,20,.25);
+      color: var(--text);
+      font-size:13px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      white-space:nowrap;
+    }
+    .pill span{color:var(--muted); font-weight:600}
+    .hero-right{padding:18px; display:flex; flex-direction:column; gap:12px}
+    .mini{
+      padding:16px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(11,15,20,.35);
+    }
+    .mini h3{margin:0 0 6px; font-size:16px}
+    .mini p{margin:0; color:var(--muted); font-size:14px}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin:18px 0 50px;
+    }
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: span 12}
+    @media (max-width: 900px){
+      .col-6,.col-4,.col-8{grid-column: span 12}
+    }
+    section.card{padding:22px}
+    section.card h2{margin:0 0 10px; font-size:22px}
+    .muted{color:var(--muted)}
+    .list{
+      margin:12px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .list li{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(11,15,20,.28);
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .badge{
+      width:30px; height:30px; border-radius:10px;
+      background: rgba(202,164,106,.20);
+      border:1px solid rgba(202,164,106,.30);
+      display:grid; place-items:center;
+      flex:0 0 30px;
+      font-weight:800;
+      color: var(--accent);
+    }
+    .form{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:12px
+    }
+    input{
+      flex:1 1 240px;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(11,15,20,.35);
+      color: var(--text);
+      outline:none;
+    }
+    input::placeholder{color: rgba(147,164,183,.75)}
+    footer{
+      padding:26px 0 40px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+    .small{font-size:13px}
+    .row{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .hr{height:1px; background:var(--line); margin:16px 0}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Coffee with ADHD">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <div style="font-size:14px;">coffee with adhd</div>
+            <div style="font-size:12px; color:var(--muted); font-weight:600;">Beginner → Home Barista • UAE</div>
+          </div>
+        </a>
+
+        <nav class="navlinks" aria-label="Navegación">
+          <a href="#about">Sobre</a>
+          <a href="#setup">Setup</a>
+          <a href="#journey">Progreso</a>
+          <a href="#recipes">Recetas</a>
+          <a href="#contact">Contacto</a>
+        </nav>
+
+        <div class="cta">
+          <a class="btn" href="#contact">Newsletter</a>
+          <!-- Cambia el link por tu Instagram real -->
+          <a class="btn primary" href="https://instagram.com/" target="_blank" rel="noreferrer">Ver Instagram</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <div class="hero">
+      <div class="card hero-left">
+        <div class="kicker"><span class="dot"></span> Documentando mi camino cafetero (con ADHD ✨)</div>
+        <h1>Espresso, latte art y aprendizaje real.</h1>
+        <p class="sub">
+          Soy principiante en el mundo del café y vivo en <b>UAE</b>. Aquí comparto mis pruebas, errores,
+          recetas y progreso hasta convertirme en <b>home barista</b> (sin postureo).
+        </p>
+        <div class="pillrow">
+          <div class="pill">☕ <span>Enfoque:</span> Espresso & Milk</div>
+          <div class="pill">🎯 <span>Meta:</span> Consistencia + Latte art</div>
+          <div class="pill">📍 <span>Based in:</span> UAE</div>
+          <div class="pill">🧠 <span>ADHD:</span> hiperfoco & caos</div>
+        </div>
+        <div class="form">
+          <a class="btn primary" href="#journey">Ver el progreso</a>
+          <a class="btn" href="#recipes">Ver recetas</a>
+        </div>
+      </div>
+
+      <div class="card hero-right">
+        <div class="mini">
+          <h3>Lo que verás aquí</h3>
+          <p>Shots diarios, ajustes de molienda, vaporizado de leche, latte art y reviews honestas del setup.</p>
+        </div>
+        <div class="mini">
+          <h3>Publico en formato</h3>
+          <p>Reels cortos (30–45s), carruseles “cómo lo hice”, y notas rápidas para gente que también empieza.</p>
+        </div>
+        <div class="mini">
+          <h3>¿Te suena?</h3>
+          <p>Si también tienes ADHD o te cuesta ser constante, esto va de hacerlo simple y repetir.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section id="about" class="card col-6">
+        <h2>Sobre este proyecto</h2>
+        <p class="muted">
+          “coffee with adhd” es mi diario cafetero: una mezcla de curiosidad, práctica y paciencia.
+          Si estás empezando, esto es para ti.
+        </p>
+        <ul class="list">
+          <li><div class="badge">1</div><div><b>Aprender</b><br><span class="muted">Fundamentos de espresso, ratio, extracción, leche.</span></div></li>
+          <li><div class="badge">2</div><div><b>Practicar</b><br><span class="muted">Rutina simple para mejorar sin volverse loco.</span></div></li>
+          <li><div class="badge">3</div><div><b>Compartir</b><br><span class="muted">Tips, fallos y avances reales, sin “guru vibes”.</span></div></li>
+        </ul>
+      </section>
+
+      <section id="setup" class="card col-6">
+        <h2>Mi setup</h2>
+        <p class="muted">Actualiza aquí tu equipo cuando quieras (ejemplo):</p>
+        <ul class="list">
+          <li><div class="badge">☕</div><div><b>Máquina</b><br><span class="muted">Sage Barista Express Impress</span></div></li>
+          <li><div class="badge">⚙️</div><div><b>Molienda</b><br><span class="muted">Ajustes por origen + humedad (UAE edition)</span></div></li>
+          <li><div class="badge">🥛</div><div><b>Leche</b><br><span class="muted">Textura para rosetta / tulip (mi guerra diaria)</span></div></li>
+          <li><div class="badge">🧪</div><div><b>Extras</b><br><span class="muted">Báscula, WDT, termómetro (opcional), paño</span></div></li>
+        </ul>
+      </section>
+
+      <section id="journey" class="card col-8">
+        <h2>Progreso</h2>
+        <p class="muted">Plantilla de hitos (edítalo según vayas avanzando):</p>
+        <ul class="list">
+          <li><div class="badge">✅</div><div><b>Semana 1–2</b><br><span class="muted">Encontrar receta base: ratio, tiempo, y molienda.</span></div></li>
+          <li><div class="badge">⏳</div><div><b>Semana 3–4</b><br><span class="muted">Mejorar consistencia + ajuste por tipo de grano.</span></div></li>
+          <li><div class="badge">🎨</div><div><b>Mes 2</b><br><span class="muted">Latte art: rosetta decente + control del vertido.</span></div></li>
+          <li><div class="badge">🏁</div><div><b>Mes 3</b><br><span class="muted">Recetas replicables + workflow rápido para días con prisa.</span></div></li>
+        </ul>
+      </section>
+
+      <section id="recipes" class="card col-4">
+        <h2>Recetas rápidas</h2>
+        <p class="muted">Para gente con poca energía mental:</p>
+        <ul class="list">
+          <li><div class="badge">1</div><div><b>Flat White</b><br><span class="muted">Doble espresso + microfoam corto.</span></div></li>
+          <li><div class="badge">2</div><div><b>Iced Latte</b><br><span class="muted">Espresso + hielo + leche fría.</span></div></li>
+          <li><div class="badge">3</div><div><b>Americano</b><br><span class="muted">Espresso + agua caliente (simple y win).</span></div></li>
+        </ul>
+      </section>
+
+      <section id="contact" class="card col-12">
+        <h2>Newsletter / Contacto</h2>
+        <p class="muted">Si quieres recibir mis recetas, progresos y aprendizajes (1 email/semana):</p>
+        <form class="form" onsubmit="event.preventDefault(); alert('¡Gracias! (Demo) Aquí conectarías Mailchimp / ConvertKit / etc.)');">
+          <input type="email" placeholder="Tu email" required />
+          <button class="btn primary" type="submit">Suscribirme</button>
+        </form>
+        <div class="hr"></div>
+        <div class="row small">
+          <div>© <span id="y"></span> coffee with adhd</div>
+          <!-- Cambia el link por tu Instagram real -->
+          <div><a class="btn" href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a></div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="wrap">
+      <div class="row">
+        <div>
+          <b>Tip rápido:</b> Si quieres usar tu logo/foto de perfil aquí, te lo integro en el header.
+        </div>
+        <div class="small">Hecho para: <span class="muted">principiante → home barista</span></div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
